@@ -41,14 +41,29 @@ const inventorsYearsLived = inventors.reduce((acc, number) => acc + number.passe
 
 // 5. Sort the inventors by years lived
 const inventorsSortByYears = inventors.sort((a, b) => (b.passed - b.year) - (a.passed - a.year));
-console.table(inventorsSortByYears);
+//console.table(inventorsSortByYears);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+// const category = document.querySelector('.mw-category');  // Both variables can be pulled into one by declaring it as 'const category = document.querySelectorAll('.mw-category a')'; 
+// const linksCategory = Array.from(category.querySelectorAll('a')); // Returns a NodeList. To map it, it's to be converted to an array. It can also be achieved with spread operator: [...category.querySelectorAll('a')];
+
+// const de = linksCategory
+//             .map(link => link.textContent)
+//             .filter(streetName => streetName.includes('de'));
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+// const inventorsSortLastName = inventors.sort((a, b) => a.last.localeCompare(b.last));
+// console.table(inventorsSortLastName);
+
+const peopleSortByLastName = people.sort((lastOne, nextOne) => {
+  const [aLast, aFirst] = lastOne.split(', ');
+  const [bLast, bFirst] = nextOne.split(', ');
+  return aLast.localeCompare(bLast); // Also: 'return aLast > bLast ? 1 : -1;'
+})
+//console.log(peopleSortByLastName);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these

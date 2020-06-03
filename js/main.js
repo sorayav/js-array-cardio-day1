@@ -21,27 +21,27 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 // 1. Filter the list of inventors for those who were born in the 1500's
 
 const inventors1500 = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
-//console.table(inventors1500);
+console.table(inventors1500);
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
 
 const inventorsNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
-//console.log(inventorsNames);
+console.log(inventorsNames);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 const inventorsSortBirthdate = inventors.sort((a, b) => a.year - b.year);
-//console.table(inventorsSortBirthdate);
+console.table(inventorsSortBirthdate);
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
 const inventorsYearsLived = inventors.reduce((acc, number) => acc + number.passed - number.year, 0);
-//console.log(inventorsYearsLived);
+console.log(inventorsYearsLived);
 
 // 5. Sort the inventors by years lived
 const inventorsSortByYears = inventors.sort((a, b) => (b.passed - b.year) - (a.passed - a.year));
-//console.table(inventorsSortByYears);
+console.table(inventorsSortByYears);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -63,8 +63,21 @@ const peopleSortByLastName = people.sort((lastOne, nextOne) => {
   const [bLast, bFirst] = nextOne.split(', ');
   return aLast.localeCompare(bLast); // Also: 'return aLast > bLast ? 1 : -1;'
 })
-//console.log(peopleSortByLastName);
+console.log(peopleSortByLastName);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+// const sum = data.reduce((acc, item) => acc + item.length, 0);
+// console.log(sum);
+
+const transportation = data.reduce((obj, item) => {
+  if (!obj[item]) {
+    obj[item] = 0;
+  } 
+  obj[item]++;
+  return obj;
+}, {}); // Start with a blank object and loop over every data's item, to not hard code all the possibilities here (such as: "car: 0, truck: 0", etc.).
+
+console.log(transportation);
